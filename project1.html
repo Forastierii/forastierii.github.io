@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Hyperspace by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Pedro Forastieri</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="project1.html" class="active">Visual Product Recommendation System</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Visual Product Recommendation System</h1>
+							<p>For this project for an e-commerce, it was developed the logic and infrastructure to generate supplementary recommendations (similar range of products but not the same product).
+								The main source of data were pictures for each product (when available). Then their embeddings were calculated, compared against each other and the pairs of recommendations were ranked according to metrics of interest, providing the most similar products.</p>
+							<p>This project rendered up to 5% increase in BTR (buy-through-rate, number of purchases/number of views) through sales in a new carrousel.
+							<p>Some of the tools used for this project were:
+							<li>AWS S3 for object storage of recommendations generated and consumption of indexes generated.</li>
+							<li>GCP BigQuery for SQL-based querying and tables in data warehouse.</li>
+							<li>Python for all the coding involved using OOP.</li>	
+							<li>Datadog and Monte Carlo for monitoring and metrics.</li>	
+							</p>
+							<p>The use of unstructured data for recommendation systems can be challenging. Here are some challenges faced and decisions made:
+							<li>Inbetween images are the best: what are the best lower and upper thresholds to filter distances between two embeddings? Finding these thresholds for cosine similarity was key to remove images that are either very different (and don't make sense being recommended) or very similar (why would you recommend the exact same product for an exploration offer?). Experiments were performed to find the best results.</li>
+							<li>Deduplication: recommendation images that were too similar between each other had to be addressed by LSH hashing mechanism to group them and only retrieve one element from the group (preferrably the product that had best metric performance).</li>
+							<li>Not every product has an image: removing products that have no images from the computation was necessary.</li>
+							<li>Heavy cost and processing times to work with embeddings: finding the right data structures and algorithms is always key.</li>
+							</p>
+							<span class="image fit"><img src="images/visual-recsys.drawio2.png" alt="" /></span>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Hyperspace by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Pedro Forastieri</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="project2.html" class="active">Brand Recommendation System</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Brand Recommendation System </h1>
+							<p>For this project for an e-commerce, it was developed the logic and infrastructure to generate brand recommendations, serving as input for product recommendation systems.
+								The main source of data were view events, ie. how many views each brand got in a given period of time.
+								Since there are brands that are very common (most viewed) they would dominate brand recommendations.
+								This is not interesting, especially for niche brands that have nothing to do with these most viewed brands.
+								The approach to solve this problem was using the Tf-Idf algorithm that provides a numerical statistic reflecting the importance of a word in a document relative to a collection of documents.
+								This helped in identifying unique and relevant brands for recommendations by reducing the dominance of common brands.
+							<p>This project rendered results in a 13% increase in CTR (clickthrough rate, number of clicked recommendations/number of viewed recommendations).
+							<p>Some of the tools used for this project were:
+							<li>GCP BigQuery for SQL-based querying and tables in data warehouse and developing the Tf-Idf algorithm from scratch as a bunch of CTEs. Most commonly done in Python, additional complexity of involving EC2 machines were not desired.</li>
+							<li>Proprietary Data Mesh for job orchestration, to ensure data ownership and to keep domain-oriented data management. Since other teams were clients for these brand recommendations generated, using a Data Mesh decentralizes data ownership to domain teams who are most knowledgeable about their data, promoting better data quality and faster insights.</li>
+							</p>
+							<p>Many combinations of Term Frequency and Document Frequency were tested but we ended up with better results using normal term frequency and inverse document frequency.
+							<span class="image fit"><img src="images/tfidf-chart.png" alt="" /></span>
+							<p>To validate the model we tracked the brand triggers and brand recommendations for electric guitars.
+								The electric guitar brand world is very interesting because it serves the purpose very well: there are brands that are regarded as the most versatile and traditional (brands like Fender and Gibson) and brands tagged as specific for certain musical genres (brands like Dean, B.C. Rich and Jackson for heavy rock).
+								Before the Tf-Idf implementation, we had very popular brands such as Fender being recommended to niche trigger brands such as B.C. Rich and vice-versa. There wasn't much context to the recommendations given.
+								<span class="image fit" style="display: flex; justify-content: center;"><img src="images/tfidf-before.png" alt="" style="width: 50%;" /></span>
+								<p>After the implementation:
+								<li>Niche guitars ended up being recommended to niche guitars</li>
+								<li>Popular guitars ended up being recommended to popular guitars</li>
+								<span class="image fit" style="display: flex; justify-content: center;"><img src="images/tfidf-after.png" alt="" style="width: 50%;" /></span>
+							</p>
+							<p>The final architecture of the problem:
+							<span class="image fit" style="display: flex; justify-content: center;"><img src="images/brand2brand-recsys.drawio2.png" alt="" style="width: 50%;" /></span>	
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
